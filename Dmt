@@ -1,0 +1,488 @@
+#Assignment-1
+
+#Q1.Write a NumPy program to get the numpy version and show numpy build Configuration.
+import numpy as np
+print("NumPy version:{numpy_version}")
+np.show_config()
+
+#Q2. Write a NumPy program to get help on the add function.
+import numpy as np
+help(np.add)
+np.info(np.add)
+
+#Q3.Write a NumPy program to test whether none of the elements of a given array is zero.
+import numpy as np
+array=np.array([1,2,3,4,5])
+if np.all(array != 0):
+   print("Threr are no zero present in array")
+else:
+   print("at least one zero present in array")
+
+#Q4.Write a NumPy program to test a given array element-wise for finiteness (not infinity or not a Number). Sample data: [1, 0, np.nan, np.inf]
+import numpy as np
+array = np.array([1,2,np.nan,np.inf])
+finiteness_check=np.isfinite(array)
+print(f"Array:{array}")
+print(f"Finiteness Check:{finiteness_check}")
+
+#Q5.Write a NumPy program to create an element-wise comparison (greater, greater_equal, less and less_equal) of two given arrays.
+import numpy as np
+array1 = np.array([3,5,7,10])
+array2 = np.array([4,5,8,10])
+greater = np.greater(array1,array2)
+greater_equal = np.greater_equal(array1,array2)
+less = np.less(array1,array2)
+less_equal = np.less_equal(array1,array2)
+print("Greater:",greater)
+print("Greater than Equal to:",greater_equal)
+print("less:",less)
+print("Less Than Equal to:",less_equal)
+
+#Q6. Write a NumPy program to create an array with the values 1, 7, 13, 105 and determine the size of the memory occupied by the array.
+import numpy as np
+array = np.array([1,7,13,105])
+array_size = array.nbytes
+print("Array:",array)
+print("Memory Size Occupide By Array:",array_size,"Byte")
+
+#Q7.Write a NumPy program to create an array of all the even integers from 30 to 70.
+import numpy as np
+even_no = np.arange(30,71,2)
+print("Even Number for Range 30 to 70:",even_no)
+
+#Q8.Write a NumPy program to create a 3x3 identity matrix.
+import numpy as np
+identity_matrix = np.eye(3)
+print(identity_matrix)
+
+#Q9.Write a NumPy program to generate a random number between 0 and 1.
+import numpy as np
+random_no = np.random.rand()
+print(random_no)
+
+#10.Write a NumPy program to generate an array of 15 random numbers from a standard normal distribution.
+import numpy as np
+random_array = np.random.rand(15)
+print(random_array)
+
+#Q11. Write a NumPy program to create a vector with values ranging from 15 to 55 and print all values except the first and last.
+import numpy as np
+vector = np.arange(15,51)
+print(vector[1:-1])
+
+#Q12.Write a NumPy program to create a 3X4 array using and iterate over it.
+import numpy as np
+array = np.arange(1,13).reshape(3,4)
+print("3*4 Array")
+print(array)
+print("\nitrating over the array is")
+for row in array:
+    for element in array:
+        print(element,end=" ")
+        print()
+
+#Q13.Write a NumPy program to create a vector of length 5 filled with arbitrary integers from 0 to 10.
+import numpy as np
+vector = np.random.randint(0,11,size=5)
+print("Vector of length 5 with integer 0 to 10 ")
+print(vector)
+
+#Q14.Write a Pandas program to convert a NumPy array to a Pandas series. Sample NumPy array: d1 = [10, 20, 30, 40, 50].
+import numpy as np
+import pandas as pd
+d1 =np.array([10,20,30,40,50])
+series = pd.Series(d1)
+print("Pandas Series:")
+print(series)
+
+#Q15.Write a Pandas program to get the day of month, day of year, week number and day of week from a given series of date strings.
+import pandas as pd
+date_series = pd.Series(['2024-03-12','2024-05-20','2024-06-22','2024-02-10','2024-07-23'])
+date_series = pd.to_datetime(date_series)
+day_of_month = date_series.dt.day
+day_of_year = date_series.dt.dayofyear
+week_number = date_series.dt.isocalendar().week
+day_of_week = date_series.dt.day_name()
+print("Day of Month:")
+print(day_of_month)
+print("\nDay of Year:")
+print(day_of_year)
+print("\nDay of Week:")
+print(day_of_week)
+
+#Q16.Write a Pandas program convert the first and last character of each word to uppercase in each word of a given series.
+import pandas as pd
+series = pd.Series(['php','java','python','cpp'])
+print(series)
+result =  series.map(lambda x: x[0].upper() +x[1:-1] +x[-1].upper())
+print(result)
+
+#Q17.Write a Pandas program to compute the minimum, 25th percentile, median, 75th, and maximum of a given series
+import pandas as pd
+data = pd.Series([1,2,3,4,5,6,7,8,9,10])
+min_val = data.min()
+per_25 = data.quantile(0.25)
+median = data.median()
+per_75 = data.quantile(0.75)
+max_val = data.max()
+print("Minimum Value:",min_val)
+print("25th Percentile:",per_25)
+print("Median:",median)
+print("25th Precentile:",per_75)
+print("Maximum Value:",max_val)
+
+#Q18.Write a Pandas program to create the mean and standard deviation of the data of a given Series. Sample data:(data = [1,2,3,4,5,6,7,8,9,5,3])
+import pandas as pd
+data = pd.Series([1,2,3,4,5,6,7,8,9,5,3])
+mean_val = data.mean()
+stand_val = data.std()
+print(mean_val)
+print(stand_val)
+
+#Q19.Write a Pandas program to compute the Euclidean distance between two given series Euclidean distance.
+import pandas as pd
+series1 = pd.Series([1,2,3,4,5])
+series2 = pd.Series([4,5,6,7,8])
+euc_dist = np.linalg.norm(series1-series2)
+print("Euclidean Distance is:",euc_dist)
+
+#Q20.Write a Pandas program to create a TimeSeries to display all the Sundays of given year
+import pandas as pd
+dates = pd.date_range('2024-01-01','2024-12-31')
+print(dates[dates.dayofweek==6])
+
+
+#Assignment-2
+
+Write a program to read "StudentsPerformance.csv" file. solve the following :
+
+#Q1.A.To display the shape of dataset.
+import pandas as pd
+df = pd.read_csv('StudentsPerformance.csv')
+def display_shape(dataframe):
+    print("Shape of the dataset:", dataframe.shape)
+display_shape(df)
+
+#Q1.B. To display the top rows of the dataset with their columns.
+def display_top_rows(dataframe, n=3):
+    print(f"Top {n} rows of the dataset:\n", dataframe.head(n))
+display_top_rows(df, 3)  
+
+#Q1.C.To display the number of rows randomly.
+def display_random_rows(dataframe, n=4):
+    print(f"{n} Random rows from the dataset:\n", dataframe.sample(n))
+display_random_rows(df, 4) 
+
+#Q1.D.To display the number of columns and names of the columns.
+def display_columns_info(dataframe):
+    print(f"Number of columns: {len(dataframe.columns)}")
+    print("Column names:", dataframe.columns.tolist())
+display_columns_info(df)
+
+#Q2.A. Write a Python program to create a Bar plot to get the frequency of the three species of the Iris data.
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv('iris.csv')
+def plot_species_frequency(dataframe):
+    species_count = dataframe['species'].value_counts() 
+    plt.figure(figsize=(8, 6))
+    species_count.plot(kind='bar', color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+    plt.title('Frequency of Iris Species')
+    plt.xlabel('Species')
+    plt.ylabel('Count')
+    plt.xticks(rotation=0)
+    plt.show()
+plot_species_frequency(df)
+
+#Q2.B. Write a Python program to create a histogram of the three species of the Iris data.
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv('iris.csv')
+print(df.columns)
+df.columns = df.columns.str.strip()
+def plot_species_histogram(dataframe):
+    plt.figure(figsize=(10, 8))
+    sns.histplot(data=dataframe, x="sepal_len", hue="species", multiple="stack", palette="Set1", bins=20)
+    plt.title('Sepal Length Distribution by Species')
+    plt.xlabel('Sepal Length')
+    plt.ylabel('Frequency')
+    plt.show()
+
+plot_species_histogram(df)
+
+#Q3. Write a Python program to create data frame containing column name, salary, department add 10 rows with some missing and 
+duplicate values to the data frame. Also drop all null and empty values. Print the modified data frame
+import pandas as pd
+import numpy as np
+data = {
+    'name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'George', 'Hannah', 'Alice', 'Charlie'],
+    'salary': [50000, 60000, np.nan, 75000, 50000, 70000, None, 80000, 50000, None],
+    'department': ['HR', 'IT', 'Finance', None, 'HR', 'IT', 'Finance', 'HR', 'HR', None]
+}
+df = pd.DataFrame(data)
+
+print("Original DataFrame with missing and duplicate values:")
+print(df)
+
+df_cleaned = df.dropna()
+
+#df_cleaned = df_cleaned.drop_duplicates()
+
+print("\nModified DataFrame after dropping missing and duplicate values:")
+print(df_cleaned)
+
+
+#Assignment-3
+
+#Q.1.Write a code to read the dataset (â€œgroceries.csvâ€). Apply Apriori algorithm with implementation of following requirement:
+a. Display Support and confidence of each rule.
+b. Use min_support=0.0040, min_confidence=0.2,and display support, confidence.
+
+import pandas as pd
+from mlxtend.frequent_patterns import apriori, association_rules
+
+data = pd.read_csv("groceries1.csv", header=None) 
+transactions = []
+for index, row in data.iterrows():
+    transaction = [str(item).strip() for item in row if str(item) != 'nan']
+    transactions.append(transaction)
+from mlxtend.preprocessing import TransactionEncoder
+te = TransactionEncoder()
+transactions_encoded = te.fit(transactions).transform(transactions)
+df_transactions = pd.DataFrame(transactions_encoded, columns=te.columns_)
+frequent_itemsets = apriori(df_transactions, min_support=0.004, use_colnames=True)
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.2)
+for _, rule in rules.iterrows():
+    antecedents = ', '.join(list(rule['antecedents']))
+    consequents = ', '.join(list(rule['consequents']))
+    print(f"Rule: {antecedents} -> {consequents}")
+    print(f"Support: {rule['support']}")
+    print(f"Confidence: {rule['confidence']}")
+    print("-" * 20)
+
+
+#Q.2. Write a code to read the dataset (â€œMarket_Basket_Optimisation.csvâ€). Apply Apriori algorithm.
+import pandas as pd
+from mlxtend.frequent_patterns import apriori, association_rules
+
+# Load the dataset
+data = pd.read_csv('Market_Basket_Optimisation.csv', header=None)
+
+# Preview the data
+print("Dataset Preview:")
+print(data.head())
+
+# Convert the dataset into a list of transactions
+transactions = []
+for i in range(0, len(data)):
+    transactions.append([str(data.values[i, j]) for j in range(0, len(data.columns)) if str(data.values[i, j]) != 'nan'])
+
+# Transform the transactions into a one-hot encoded DataFrame
+from mlxtend.preprocessing import TransactionEncoder
+
+# Initialize the TransactionEncoder
+te = TransactionEncoder()
+te_data = te.fit(transactions).transform(transactions)
+
+# Convert the array to a DataFrame
+df = pd.DataFrame(te_data, columns=te.columns_)
+
+# Apply the Apriori algorithm with a minimum support threshold
+frequent_itemsets = apriori(df, min_support=0.004, use_colnames=True)
+
+# Generate the association rules with a minimum confidence threshold
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.2)
+
+# Display the frequent itemsets
+print("\nFrequent Itemsets:")
+print(frequent_itemsets)
+
+# Display the association rules
+print("\nAssociation Rules:")
+print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])
+
+
+#Assignment-4
+
+#Q.1.Write a code to read the dataset (â€œiris.csvâ€). Apply Decision Tree Classifier algorithm using training criterion as entropy/ 
+gini index and find out the accuracy of the classifier  Import necessary libraries.
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load the dataset
+df = pd.read_csv("Iris.csv")
+
+# Display the first few rows to understand the dataset
+print(df.head())
+
+# Assuming the dataset has columns: 'sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species'
+# Split features (X) and target (y)
+X = df.drop(columns=['species'])  # Features
+y = df['species']  # Target variable (species)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Decision Tree with Gini Index
+clf_gini = DecisionTreeClassifier(criterion='gini', random_state=42)
+clf_gini.fit(X_train, y_train)
+
+# Predict on test data
+y_pred_gini = clf_gini.predict(X_test)
+
+# Calculate accuracy
+accuracy_gini = accuracy_score(y_test, y_pred_gini)
+print(f"Accuracy of Decision Tree with Gini Index: {accuracy_gini:.4f}")
+
+# Decision Tree with Entropy (Information Gain)
+clf_entropy = DecisionTreeClassifier(criterion='entropy', random_state=42)
+clf_entropy.fit(X_train, y_train)
+
+# Predict on test data
+y_pred_entropy = clf_entropy.predict(X_test)
+
+# Calculate accuracy
+accuracy_entropy = accuracy_score(y_test, y_pred_entropy)
+print(f"Accuracy of Decision Tree with Entropy: {accuracy_entropy:.4f}")
+
+
+#Q.2.Write a code to read the dataset (â€œuser_data.csvâ€). Apply NaÃ¯ve Bayes algorithm using GaussianNB classifier to fit
+training dataset and find out the accuracy of the classifier.
+
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+df = pd.read_csv("User_Data.csv")
+# Label encoding for categorical columns like 'Gender'
+label_encoder = LabelEncoder()
+df['Gender'] = label_encoder.fit_transform(df['Gender'])  # Converts 'Male' to 0 and 'Female' to 1
+
+# Now you can continue with your train/test split and model fitting
+X = df.drop(columns=['Purchased'])  # Features
+y = df['Purchased']  # Target
+
+# Example of splitting the data
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Now train the Naive Bayes classifier
+from sklearn.naive_bayes import GaussianNB
+
+nb_classifier = GaussianNB()
+nb_classifier.fit(X_train, y_train)
+
+# Evaluate the model
+y_pred = nb_classifier.predict(X_test)
+
+# Calculate the accuracy of the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy of NaÃ¯ve Bayes (GaussianNB): {accuracy:.4f}")
+
+#Q.3. Write a code to read the dataset (â€œsalary_data.csvâ€). Apply Simple Linear Regression algorithm.
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load the dataset
+df = pd.read_csv("Salary_Data.csv")
+
+# Display the first few rows of the dataset to understand its structure
+print(df.head())
+
+# Assuming the dataset has columns like 'years_of_experience' and 'salary'
+# Select the feature (X) and target (y)
+X = df[['YearsExperience']]  # Independent variable (feature)
+y = df['Salary']  # Dependent variable (target)
+
+# Split the data into training and testing sets (e.g., 70% training, 30% testing)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create the Simple Linear Regression model
+model = LinearRegression()
+
+# Train the model using the training data
+model.fit(X_train, y_train)
+
+# Make predictions on the test data
+y_pred = model.predict(X_test)
+
+# Evaluate the model performance
+# Calculate Mean Squared Error (MSE)
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse:.4f}")
+
+# Calculate R-squared value (coefficient of determination)
+r2 = r2_score(y_test, y_pred)
+print(f"R-squared: {r2:.4f}")
+
+# Optionally, print the coefficients
+print(f"Model coefficients: Intercept = {model.intercept_:.4f}, Slope = {model.coef_[0]:.4f}")
+
+
+#Assignment-5
+
+#Q.1.Write a code to read the dataset (â€œincome.csvâ€). Apply K-means clusteringÂ algorithm.
+
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+
+# Step 1: Load the dataset
+df = pd.read_csv('income.csv')
+
+# Step 2: Data Preprocessing (if needed)
+# Assuming the dataset has columns like 'Income' and 'Age'
+# If there are categorical columns, you may need to encode them or drop them.
+
+# Handling missing values (if any)
+df = df.dropna()
+
+# Step 3: Extract the relevant features for clustering (example: 'Income', 'Age')
+X = df[['Income($)', 'Age']]
+
+# Step 4: Standardize the features (recommended for K-means)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Step 5: Apply K-means clustering
+kmeans = KMeans(n_clusters=3, random_state=42)  # You can adjust the number of clusters (n_clusters)
+kmeans.fit(X_scaled)
+
+# Step 6: Add cluster labels to the original dataset
+df['Cluster'] = kmeans.labels_
+
+# Step 7: Visualize the clusters
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Income($)'], df['Age'], c=df['Cluster'], cmap='viridis')
+plt.xlabel('Income')
+plt.ylabel('Age')
+plt.title('K-means Clustering of Income and Age')
+plt.colorbar(label='Cluster')
+plt.show()
+
+# Step 8: Print the centroids and cluster labels
+print("Cluster Centers:")
+print(kmeans.cluster_centers_)
+print("\nCluster Labels for Each Data Point:")
+print(kmeans.labels_)
+
+
+
+
+
+
+
+
+
+
